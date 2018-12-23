@@ -26,8 +26,22 @@ requests as well. So if you wish to go back to returning value for the current b
 ### Middleware
 To use this package in your middleware, just add the `device_detector` middleware alias to your `web` middleware in the
 `Http/Kernel.php` file in your project. Once that's installed, you can access the four included detectors in your
-request. The is key in the request contains an array with four booleans; `bot`, `desktop`, `mobile`, and `touch`. These
+request. The `is` key in the request contains an array with four booleans; `bot`, `desktop`, `mobile`, and `touch`. These
 booleans are available for every request and also cached to your already assigned cache repository.
+
+```php
+// Get the booleans from DeviceDetector.
+$request->get('is');
+```
+
+```php
+[
+    'bot'     => false,
+    'desktop' => true,
+    'mobile'  => false,
+    'touch'   => false,
+]
+```
 
 ## Documentation
 This package is documented using [phpDocumentor](https://www.phpdoc.org/) and it's API documentation can be located 
