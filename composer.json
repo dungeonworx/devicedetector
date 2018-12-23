@@ -7,9 +7,6 @@
         "laravel"
     ],
     "prefer-stable": true,
-    "require": {
-        "piwik/device-detector": "^3.11"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -28,5 +25,30 @@
         "psr-4": {
             "Gameworx\\DeviceDetector\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gameworx\\DeviceDetector\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gameworx\\DeviceDetector\\DeviceDetectorServiceProvider"
+            ],
+            "aliases": {
+                "DeviceDetector": "Gameworx\\DeviceDetector\\DeviceDetector"
+            }
+        }
+    },
+    "require": {
+        "piwik/device-detector": "^3.11",
+        "illuminate/support": "^5.7",
+        "illuminate/contracts": "^5.7",
+        "illuminate/http": "^5.7"
+    },
+    "require-dev": {
+        "laravel/framework": "^5.7",
+        "phpunit/phpunit": "^7.5"
     }
 }

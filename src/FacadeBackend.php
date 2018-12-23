@@ -1,0 +1,226 @@
+<?php
+
+namespace Gameworx\DeviceDetector;
+
+class FacadeBackend
+{
+    /**
+     * DeviceDetector instance.
+     *
+     * @var \DeviceDetector\DeviceDetector
+     */
+    private $deviceDetector;
+
+    /**
+     * FacadeBackend constructor.
+     *
+     * @param \DeviceDetector\DeviceDetector $deviceDetector
+     */
+    public function __construct(\DeviceDetector\DeviceDetector $deviceDetector)
+    {
+        $this->deviceDetector = $deviceDetector;
+    }
+
+    /**
+     * Parse the user agent string for
+     *
+     * @param string $user_agent The user agent string that we're parsing.
+     *
+     * @return $this
+     */
+    public function get($user_agent)
+    {
+        // Set the user agent to the DeviceDetector.
+        $this->deviceDetector->setUserAgent($user_agent);
+
+        // Check to see if this user agent is already parsed.
+        if (!$this->deviceDetector->isParsed()) {
+            $this->deviceDetector->parse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Return the parsed attributes for the user agent.
+     *
+     * @param mixed $user_agent The user agent string that we're parsing.
+     *
+     * @return array
+     */
+    public function getAttributes($user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return [
+            'browser'               => $this->deviceDetector->isBrowser(),
+            'camera'                => $this->deviceDetector->isCamera(),
+            'car'                   => $this->deviceDetector->isCarBrowser(),
+            'console'               => $this->deviceDetector->isConsole(),
+            'desktop'               => $this->deviceDetector->isDesktop(),
+            'feature_phone'         => $this->deviceDetector->isFeaturePhone(),
+            'feed_reader'           => $this->deviceDetector->isFeedReader(),
+            'library'               => $this->deviceDetector->isLibrary(),
+            'media_player'          => $this->deviceDetector->isMediaPlayer(),
+            'mobile_app'            => $this->deviceDetector->isMobileApp(),
+            'mobile_device'         => $this->deviceDetector->isMobile(),
+            'phone_tablet'          => $this->deviceDetector->isPhablet(),
+            'pim'                   => $this->deviceDetector->isPIM(),
+            'portable_media_player' => $this->deviceDetector->isPortableMediaPlayer(),
+            'smart_display'         => $this->deviceDetector->isSmartDisplay(),
+            'smart_phone'           => $this->deviceDetector->isSmartphone(),
+            'tablet'                => $this->deviceDetector->isTablet(),
+            'touch_enabled'         => $this->deviceDetector->isTouchEnabled(),
+            'tv'                    => $this->deviceDetector->isTV(),
+        ];
+    }
+
+    /**
+     * Return the bot details from the device detector.
+     *
+     * @param mixed $user_agent The user agent to parse.
+     *
+     * @return array
+     */
+    public function getBot($user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return $this->deviceDetector->getBot();
+    }
+
+    /**
+     * Return the client details from the user agent.
+     *
+     * @param string $attr       Client property to return.
+     * @param mixed  $user_agent The user agent to parse.
+     *
+     * @return array|string
+     */
+    public function getClient($attr = '', $user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return $this->deviceDetector->getClient($attr);
+    }
+
+    /**
+     * Return the device details from the user agent.
+     *
+     * @param string $attr       Operating system property to return.
+     * @param mixed  $user_agent The user agent to parse.
+     *
+     * @return array|string
+     */
+    public function getDevice($attr = '', $user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        switch ($attr) {
+            case 'brand':
+                return $this->deviceDetector->getBrand();
+            case 'brand_name':
+                return $this->deviceDetector->getBrandName();
+            case 'model':
+                return $this->deviceDetector->getModel();
+            case 'name':
+                return $this->deviceDetector->getDeviceName();
+            default:
+                return [
+                    'brand'      => $this->deviceDetector->getBrand(),
+                    'brand_name' => $this->deviceDetector->getBrandName(),
+                    'model'      => $this->deviceDetector->getModel(),
+                    'name'       => $this->deviceDetector->getDeviceName(),
+                ];
+        }
+    }
+
+    /**
+     * Return the client details from the user agent.
+     *
+     * @param string $attr       Operating system property to return.
+     * @param mixed  $user_agent The user agent to parse.
+     *
+     * @return array|string
+     */
+    public function getOs($attr = '', $user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return $this->deviceDetector->getOs($attr);
+    }
+
+    /**
+     * Return if this user agent is a bot.
+     *
+     * @param mixed $user_agent The user agent string that we're parsing.
+     *
+     * @return bool
+     */
+    public function isBot($user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return $this->deviceDetector->isBot();
+    }
+
+    /**
+     * Return if this user agent is a desktop system.
+     *
+     * @param mixed $user_agent The user agent string that we're parsing.
+     *
+     * @return bool
+     */
+    public function isDesktop($user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return $this->deviceDetector->isDesktop();
+    }
+
+    /**
+     * Return if this user agent is a mobile device.
+     *
+     * @param mixed $user_agent The user agent string that we're parsing.
+     *
+     * @return bool
+     */
+    public function isMobile($user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return $this->deviceDetector->isMobile();
+    }
+
+    /**
+     * Return if this user agent is touch enabled.
+     *
+     * @param mixed $user_agent The user agent string that we're parsing.
+     *
+     * @return bool
+     */
+    public function isTouchEnabled($user_agent = false)
+    {
+        if ($user_agent !== false) {
+            $this->get($user_agent);
+        }
+
+        return $this->deviceDetector->isTouchEnabled();
+    }
+}

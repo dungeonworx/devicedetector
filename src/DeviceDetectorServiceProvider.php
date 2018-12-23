@@ -1,0 +1,72 @@
+<?php
+
+namespace Gameworx\DeviceDetector;
+
+/**
+ * Class DeviceDetectorServiceProvider
+ *
+ * @package Gameworx\DeviceDetector
+ */
+class DeviceDetectorServiceProvider extends \Illuminate\Support\ServiceProvider
+{
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // Merge the configuration from the package to the user's configuration.
+        $this->mergeConfigFrom(__DIR__.'/../config/device_detector.php', 'cache_enabled');
+        $this->mergeConfigFrom(__DIR__.'/../config/device_detector.php', 'cache_prefix');
+
+        $config_path = $this->app->make('path.config');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/device_detector.php' => $config_path . '/device_detector.php',
+            ]);
+        }
+    }
+
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        // Create the DeviceDetector cache wrapper over Laravel cache.
+        $this->app->singleton(LaravelCacheBridge::class, function ($app) {
+            /** @var \Illuminate\Contracts\Foundation\Application $app */
+            return new LaravelCacheBridge(
+                $app->make(\Illuminate\Contracts\Config\Repository::class),
+                $app->make(\Illuminate\Contracts\Cache\Repository::class)
+            );
+        });
+
+        // Create the DeviceDetector instance.
+        $this->app->singleton(\DeviceDetector\DeviceDetector::class, function ($app) {
+            /**
+             * @var \Illuminate\Contracts\Foundation\Application $app
+             * @var \Illuminate\Contracts\Config\Repository      $config
+             */
+            $config = $app->make('config');
+
+            $device_detector = new \DeviceDetector\DeviceDetector();
+
+            // Enable the caching bridge to Laravel if enabled.
+            if ($config->has('cache_enabled') && $config->get('cache_enabled')) {
+                $device_detector->setCache($app->make(LaravelCacheBridge::class));
+            }
+
+            return $device_detector;
+        });
+
+        // Register the facade backend.
+        $this->app->bind(FacadeBackend::class, function ($app) {
+            /** @var \Illuminate\Contracts\Foundation\Application $app */
+            return new FacadeBackend($app->make(\DeviceDetector\DeviceDetector::class));
+        });
+    }
+}
