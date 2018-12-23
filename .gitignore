@@ -1,0 +1,5 @@
+composer.lock
+composer.phar
+vendor/
+.idea/
+.idea_modules/

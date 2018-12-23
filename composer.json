@@ -1,0 +1,32 @@
+{
+    "name": "dungeonworx/laravel-devicedetector",
+    "description": "Integration with DeviceDetector and Laravel.",
+    "type": "library",
+    "keywords": [
+        "user-agent",
+        "laravel"
+    ],
+    "prefer-stable": true,
+    "require": {
+        "piwik/device-detector": "^3.11"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steven Crothers",
+            "email": "steven.crothers@gmail.com",
+            "homepage": "https://github.com/scrothers",
+            "role": "owner"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/dungeonworx/devicedetector/issues",
+        "wiki": "https://github.com/dungeonworx/devicedetector/wiki",
+        "source": "https://github.com/dungeonworx/devicedetector"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gameworx\\DeviceDetector\\": "src/"
+        }
+    }
+}
