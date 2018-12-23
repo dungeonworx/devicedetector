@@ -24,6 +24,8 @@ requests as well. So if you wish to go back to returning value for the current b
 `DeviceDetector::get($request->userAgent())` once more to reset back to the current browsing session.
 
 ```php
+use Dungeonworx\DeviceDetector\DeviceDetector;
+
 // Dump the DeviceDetector attributes to the client.
 dd(DeviceDetector::getAttributes());
 ```
