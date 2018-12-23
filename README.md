@@ -23,6 +23,35 @@ optional `user_agent` parameter to the specific method. Please note, this change
 requests as well. So if you wish to go back to returning value for the current browser request, you will need to call
 `DeviceDetector::get($request->userAgent())` once more to reset back to the current browsing session.
 
+```php
+// Dump the DeviceDetector attributes to the client.
+dd(DeviceDetector::getAttributes());
+```
+
+```php
+[
+    "browser" => true,
+    "camera" => false,
+    "car" => false,
+    "console" => false,
+    "desktop" => true,
+    "feature_phone" => false,
+    "feed_reader" => false,
+    "library" => false,
+    "media_player" => false,
+    "mobile_app" => false,
+    "mobile_device" => false,
+    "phone_tablet" => false,
+    "pim" => false,
+    "portable_media_player" => false,
+    "smart_display" => false,
+    "smart_phone" => false,
+    "tablet" => false,
+    "touch_enabled" => false,
+    "tv" => false,
+]
+```
+
 ### Middleware
 To use this package in your middleware, just add the `device_detector` middleware alias to your `web` middleware in the
 `Http/Kernel.php` file in your project. Once that's installed, you can access the four included detectors in your
