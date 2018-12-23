@@ -2,9 +2,14 @@
     "name": "dungeonworx/laravel-devicedetector",
     "description": "Integration with DeviceDetector and Laravel.",
     "type": "library",
+    "homepage": "https://dungeonworx.org/devicedetector/",
     "keywords": [
+        "laravel",
+        "laravel-facade",
+        "laravel-middleware",
+        "laravel-package",
         "user-agent",
-        "laravel"
+        "user-agent-parser"
     ],
     "prefer-stable": true,
     "license": "MIT",
@@ -19,7 +24,9 @@
     "support": {
         "issues": "https://github.com/dungeonworx/devicedetector/issues",
         "wiki": "https://github.com/dungeonworx/devicedetector/wiki",
-        "source": "https://github.com/dungeonworx/devicedetector"
+        "source": "https://github.com/dungeonworx/devicedetector",
+        "docs": "https://dungeonworx.org/devicedetector/",
+        "rss": "https://github.com/dungeonworx/devicedetector/releases.atom"
     },
     "autoload": {
         "psr-4": {
