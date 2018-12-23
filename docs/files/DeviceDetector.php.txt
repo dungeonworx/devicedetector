@@ -3,7 +3,6 @@
  * This file provides the Laravel Facade for accessing user agent data.
  *
  * @license https://opensource.org/licenses/MIT MIT
- * @filesource
  */
 
 namespace Dungeonworx\DeviceDetector;
@@ -16,16 +15,16 @@ use Illuminate\Support\Facades\Facade;
  * @package Dungeonworx\DeviceDetector
  * @see     FacadeBackend
  *
- * @method static FacadeBackend get(string $user_agent)                    Parse the user agent and return the backend.
- * @method static array         getAttributes($user_agent = false)         Get the user agent's attributes from device detection.
- * @method static array         getBot($user_agent = false)                Get the bot details from device detector.
- * @method static array|string  getClient($attr = '', $user_agent = false) Get the client details for the user agent.
- * @method static array|string  getDevice($attr = '', $user_agent = false) Get the device details for the user agent.
- * @method static array|string  getOs($attr = '', $user_agent = false)     Get the operating system details for the user agent.
- * @method static boolean       isBot($user_agent = false)                 Test if the user agent is a bot.
- * @method static boolean       isDesktop($user_agent = false)             Test if the user agent is a bot.
- * @method static boolean       isMobile($user_agent = false)              Test if the user agent is a bot.
- * @method static boolean       isTouchEnabled($user_agent = false)        Test if the user agent is a bot.
+ * @method static FacadeBackend get(string $user_agent)                                  Parse the user agent and return the backend.
+ * @method static array         getAttributes(string $user_agent = false)                Get the user agent's attributes from device detection.
+ * @method static array         getBot(string $user_agent = false)                       Get the bot details from device detector.
+ * @method static array|string  getClient(string $attr = '', string $user_agent = false) Get the client details for the user agent.
+ * @method static array|string  getDevice(string $attr = '', string $user_agent = false) Get the device details for the user agent.
+ * @method static array|string  getOs(string $attr = '', string $user_agent = false)     Get the operating system details for the user agent.
+ * @method static boolean       isBot(string $user_agent = false)                        Test if the user agent is a bot.
+ * @method static boolean       isDesktop(string $user_agent = false)                    Test if the user agent is a bot.
+ * @method static boolean       isMobile(string $user_agent = false)                     Test if the user agent is a bot.
+ * @method static boolean       isTouchEnabled(string $user_agent = false)               Test if the user agent is a bot.
  */
 class DeviceDetector extends Facade
 {
