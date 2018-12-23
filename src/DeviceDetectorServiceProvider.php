@@ -32,6 +32,9 @@ class DeviceDetectorServiceProvider extends \Illuminate\Support\ServiceProvider
                 __DIR__ . '/../config/device_detector.php' => $config_path . '/device_detector.php',
             ]);
         }
+
+        // Register the middleware alias into the http kernel.
+        $this->app->make('router')->aliasMiddleware('device_detector', DeviceDetectorMiddleware::class);
     }
 
     /**
