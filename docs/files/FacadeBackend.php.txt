@@ -236,3 +236,4 @@ class FacadeBackend
         return $this->deviceDetector->isTouchEnabled();
     }
 }
+

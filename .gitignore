@@ -1,5 +1,6 @@
 composer.lock
 composer.phar
+output/
 vendor/
 .idea/
 .idea_modules/

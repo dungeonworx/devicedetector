@@ -23,21 +23,21 @@
     },
     "autoload": {
         "psr-4": {
-            "Gameworx\\DeviceDetector\\": "src/"
+            "Dungeonworx\\DeviceDetector\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Gameworx\\DeviceDetector\\Tests\\": "tests/"
+            "Dungeonworx\\DeviceDetector\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Gameworx\\DeviceDetector\\DeviceDetectorServiceProvider"
+                "Dungeonworx\\DeviceDetector\\DeviceDetectorServiceProvider"
             ],
             "aliases": {
-                "DeviceDetector": "Gameworx\\DeviceDetector\\DeviceDetector"
+                "DeviceDetector": "Dungeonworx\\DeviceDetector\\DeviceDetector"
             }
         }
     },

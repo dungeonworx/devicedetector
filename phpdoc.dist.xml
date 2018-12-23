@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title><![CDATA[Dungeonworx Laravel DeviceDetector Bridge]]></title>
+    <transformer>
+        <target>docs</target>
+    </transformer>
+    <markers>
+        <item>TODO</item>
+        <item>FIXME</item>
+    </markers>
+    <files>
+        <directory>src</directory>
+    </files>
+</phpdoc>

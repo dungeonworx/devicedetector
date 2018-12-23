@@ -118,3 +118,4 @@ class LaravelCacheBridge implements Cache
         return false;
     }
 }
+

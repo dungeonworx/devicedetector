@@ -3,6 +3,7 @@
  * This file provides the Laravel Facade for accessing user agent data.
  *
  * @license https://opensource.org/licenses/MIT MIT
+ * @filesource
  */
 
 namespace Dungeonworx\DeviceDetector;
@@ -38,3 +39,4 @@ class DeviceDetector extends Facade
         return FacadeBackend::class;
     }
 }
+

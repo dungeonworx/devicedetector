@@ -1,8 +1,8 @@
 <?php
 
-namespace Gameworx\DeviceDetector\Tests;
+namespace Dungeonworx\DeviceDetector\Tests;
 
-use Gameworx\DeviceDetector\FacadeBackend;
+use Dungeonworx\DeviceDetector\FacadeBackend;
 use PHPUnit\Framework\TestCase;
 
 class FacadeBackendTest extends TestCase

@@ -75,3 +75,4 @@ class DeviceDetectorServiceProvider extends \Illuminate\Support\ServiceProvider
         });
     }
 }
+
