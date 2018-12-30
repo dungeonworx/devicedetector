@@ -33,8 +33,6 @@ class DeviceDetectorServiceProvider extends \Illuminate\Support\ServiceProvider
             ]);
         }
 
-        dd($this->app->make('router'));
-
         // Register the middleware alias into the http kernel.
         $this->app->make('router')->aliasMiddleware('device_detector', DeviceDetectorMiddleware::class);
     }

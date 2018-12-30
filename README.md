@@ -76,4 +76,4 @@ $request->get('is');
 
 ## Documentation
 This package is documented using [phpDocumentor](https://www.phpdoc.org/) and it's API documentation can be located 
-[here](https://dungeonworx.org/devicedetector/classes/).
+[here](https://dungeonworx.org/devicedetector/).
